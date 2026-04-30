@@ -304,6 +304,98 @@
         .tag-p { background:rgba(244,114,182,0.12);color:#f9a8d4; border:1px solid rgba(244,114,182,0.22); }
         .tag-g { background:rgba(52,211,153,0.12); color:#6ee7b7; border:1px solid rgba(52,211,153,0.22); }
 
+        /* ── EXPERIENCE SECTION ── */
+        .exp-intro {
+            font-size:1rem; color:var(--muted); margin-bottom:2.5rem;
+            max-width:560px; line-height:1.8;
+        }
+        .exp-intro em { color:#c4b5fd; font-style:normal; font-weight:600; }
+
+        .exp-timeline {
+            display:flex; flex-direction:column; gap:1.5rem;
+            position:relative;
+        }
+
+        .exp-timeline::before {
+            content:'';
+            position:absolute;
+            left:28px; top:0; bottom:0;
+            width:1px;
+            background:linear-gradient(180deg, rgba(124,58,237,0.5), rgba(6,182,212,0.3), transparent);
+        }
+
+        .exp-card {
+            padding:1.8rem 2rem;
+            border-radius:20px;
+            margin-left:0;
+            transition:transform 0.25s, border-color 0.25s;
+            position:relative;
+        }
+        .exp-card:hover { transform:translateY(-4px); border-color:rgba(255,255,255,0.18); }
+
+        .exp-dot {
+            position:absolute;
+            left:-42px; top:2.1rem;
+            width:28px; height:28px;
+            border-radius:50%;
+            display:flex; align-items:center; justify-content:center;
+            font-size:0.75rem; font-weight:700; font-family:var(--mono);
+            flex-shrink:0;
+        }
+        .dot-purple { background:rgba(124,58,237,0.25); border:1px solid rgba(124,58,237,0.45); color:#a78bfa; }
+        .dot-cyan   { background:rgba(6,182,212,0.2);   border:1px solid rgba(6,182,212,0.4);   color:#67e8f9; }
+
+        .exp-header { display:flex; align-items:flex-start; justify-content:space-between; gap:1rem; margin-bottom:0.3rem; flex-wrap:wrap; }
+
+        .exp-role { font-size:1.1rem; font-weight:700; color:var(--text); }
+
+        .exp-badge {
+            font-size:0.68rem; font-weight:600; font-family:var(--mono);
+            padding:0.28rem 0.8rem; border-radius:100px; white-space:nowrap;
+            letter-spacing:0.05em;
+        }
+        .badge-active {
+            background:rgba(52,211,153,0.12); color:#6ee7b7;
+            border:1px solid rgba(52,211,153,0.3);
+        }
+        .badge-past {
+            background:rgba(255,255,255,0.06); color:var(--muted);
+            border:1px solid var(--glass-border);
+        }
+
+        .exp-meta { display:flex; align-items:center; gap:0.8rem; margin-bottom:1.2rem; flex-wrap:wrap; }
+
+        .exp-company {
+            font-size:0.82rem; font-weight:600; color:#67e8f9;
+        }
+
+        .exp-period {
+            font-size:0.78rem; color:var(--muted); font-family:var(--mono);
+        }
+
+        .exp-sep { width:3px; height:3px; border-radius:50%; background:var(--muted); flex-shrink:0; }
+
+        .exp-bullets { list-style:none; display:flex; flex-direction:column; gap:0.55rem; }
+
+        .exp-bullets li {
+            display:flex; align-items:flex-start; gap:0.7rem;
+            font-size:0.88rem; color:var(--muted); line-height:1.65;
+        }
+
+        .exp-bullets li::before {
+            content:'';
+            width:5px; height:5px; border-radius:50%;
+            margin-top:0.52em; flex-shrink:0;
+        }
+        .exp-card:nth-child(1) .exp-bullets li::before { background:#a78bfa; }
+        .exp-card:nth-child(2) .exp-bullets li::before { background:#67e8f9; }
+
+        .exp-bullets li strong { color:var(--text); font-weight:600; }
+
+        .exp-wrap { padding-left:58px; }
+
+        /* ── END EXPERIENCE ── */
+
         .projects-wrap { display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:1.2rem; }
 
         .proj-card {
@@ -398,6 +490,9 @@
             .hero-card { display:none; }
             .about-grid,.contact-grid { grid-template-columns:1fr; }
             .form-row { grid-template-columns:1fr; }
+            .exp-timeline::before { left:14px; }
+            .exp-wrap { padding-left:32px; }
+            .exp-dot { left:-26px; width:22px; height:22px; font-size:0.65rem; }
         }
     </style>
 </head>
@@ -412,6 +507,7 @@
     <ul>
         <li><a href="#about">About</a></li>
         <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
@@ -482,7 +578,6 @@
                     <span class="info-label">Phone (India)</span>
                     <div class="info-val">+91 98941 84238</div>
                 </div>
-
             </div>
             <div class="glass info-item">
                 <div class="info-icon icon-purple">in</div>
@@ -570,6 +665,58 @@
     </div>
 </section>
 
+<!-- EXPERIENCE -->
+<section class="wrap" id="experience">
+    <div class="sec-pill">Experience</div>
+    <h2>Where I've worked<br/>and <span class="grad-text">grown</span></h2>
+    <p class="exp-intro reveal">My professional journey from <em>IT support</em> to <em>full stack development</em>.</p>
+    <div class="exp-timeline exp-wrap">
+
+        <!-- Job 1 -->
+        <div class="glass exp-card reveal" style="position:relative;">
+            <div class="exp-dot dot-purple">01</div>
+            <div class="exp-header">
+                <div class="exp-role">Full Stack Web Developer</div>
+                <span class="exp-badge badge-active">Currently Active</span>
+            </div>
+            <div class="exp-meta">
+                <span class="exp-company">Freelance / Self-Employed</span>
+                <span class="exp-sep"></span>
+                <span class="exp-period">Aug 2023 — Present</span>
+            </div>
+            <ul class="exp-bullets">
+                <li>Develop and maintain full-stack applications with <strong>clean architecture</strong></li>
+                <li>Implement <strong>secure authentication</strong> and role-based access systems</li>
+                <li>Build responsive, user-friendly interfaces that work across all devices</li>
+                <li>Optimize <strong>performance and database queries</strong> for production environments</li>
+                <li>Collaborate on real-world projects and deliver <strong>production-ready solutions</strong></li>
+            </ul>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="glass exp-card reveal" style="position:relative;">
+            <div class="exp-dot dot-cyan">02</div>
+            <div class="exp-header">
+                <div class="exp-role">IT Support Engineer</div>
+                <span class="exp-badge badge-past">Jan 2022 — Jul 2023</span>
+            </div>
+            <div class="exp-meta">
+                <span class="exp-company">Access Healthcare</span>
+                <span class="exp-sep"></span>
+                <span class="exp-period">Chennai, India &middot; 1 yr 7 mos</span>
+            </div>
+            <ul class="exp-bullets">
+                <li>Provided <strong>technical support</strong> for systems, applications, and end-users</li>
+                <li>Troubleshot hardware, software, and <strong>network issues</strong> across the organisation</li>
+                <li>Maintained system performance and ensured <strong>maximum uptime</strong></li>
+                <li>Assisted in <strong>system configurations and deployments</strong></li>
+                <li>Built strong problem-solving and debugging skills in a fast-paced environment</li>
+            </ul>
+        </div>
+
+    </div>
+</section>
+
 <!-- PROJECTS -->
 <section class="wrap" id="projects">
     <div class="sec-pill">Projects</div>
@@ -649,7 +796,7 @@
                 <a class="c-link" href="tel:+919894184238">
                     <div class="c-ico cy">&#9990;</div>
                     <div>
-                        <div style="font-size:0.68rem;color:var(--muted);">Phone(India)</div>
+                        <div style="font-size:0.68rem;color:var(--muted);">Phone (India)</div>
                         +91 98941 84238
                     </div>
                 </a>
@@ -660,7 +807,6 @@
                         +971 52 286 7004
                     </div>
                 </a>
-
                 <a class="c-link" href="https://linkedin.com/in/meshal-syed-99ba17257" target="_blank">
                     <div class="c-ico bl">in</div>
                     <div>
