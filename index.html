@@ -827,20 +827,20 @@
             <div class="form-row">
                 <div class="f-field">
                     <label>Name</label>
-                    <input type="text" placeholder="Your name" />
+                    <input id="f-name" type="text" placeholder="Your name" />
                 </div>
                 <div class="f-field">
                     <label>Email</label>
-                    <input type="email" placeholder="your@email.com" />
+                    <input id="f-email" type="email" placeholder="your@email.com" />
                 </div>
             </div>
             <div class="f-field">
                 <label>Subject</label>
-                <input type="text" placeholder="What's this about?" />
+                <input id="f-subject" type="text" placeholder="What's this about?" />
             </div>
             <div class="f-field">
                 <label>Message</label>
-                <textarea placeholder="Tell me about your project or opportunity..."></textarea>
+                <textarea id="f-message" placeholder="Tell me about your project or opportunity..."></textarea>
             </div>
             <button class="btn btn-glow" onclick="handleForm()" style="width:100%;justify-content:center;">Send Message &#10022;</button>
         </div>
@@ -853,7 +853,29 @@
 
 <script>
     function handleForm(){
-        alert('Thanks for reaching out! I will get back to you soon.');
+        const name    = document.getElementById('f-name').value.trim();
+        const email   = document.getElementById('f-email').value.trim();
+        const subject = document.getElementById('f-subject').value.trim();
+        const message = document.getElementById('f-message').value.trim();
+
+        if(!name || !email || !message){
+            alert('Please fill in your name, email, and message before sending.');
+            return;
+        }
+
+        const text = [
+            'Hi Meshal! 👋',
+            '',
+            '*Name:* ' + name,
+            '*Email:* ' + email,
+            '*Subject:* ' + (subject || '—'),
+            '',
+            '*Message:*',
+            message
+        ].join('\n');
+
+        const waURL = `https://wa.me/971522867004?text=${encodeURIComponent(text)}`;
+        window.open(waURL, '_blank');
     }
 
     const observer = new IntersectionObserver((entries) => {
